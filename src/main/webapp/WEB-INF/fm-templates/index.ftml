@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>E-mail service</title>
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+</head>
+<body>
+<form>
+    <label for="mailAdress">E-mail address: </label><br>
+    <input type="text" id="mailAdress" name="mailAddress"><br>
+    <br><label for="subject">Subject:</label><br>
+    <input type="text" id="subject" name="subject"><br>
+    <br><label for="message">Message:</label>
+    <br><textarea id="message" name="message" rows="6" cols="50">Enter your message here</textarea>
+    <br><input type="submit" value="Submit">
+</form>
+</body>
+</html>
