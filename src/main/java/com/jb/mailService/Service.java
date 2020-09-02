@@ -9,7 +9,7 @@ public class Service {
 
 Properties prop = new Properties();
 
-    public void lodadProperties() {
+    public void loadProperties() {
         prop.put("mail.smtp.auth", true);
         prop.put("mail.smtp.starttls.enable", "true");
         prop.put("mail.smtp.host", "smtp.mailtrap.io");
@@ -17,10 +17,10 @@ Properties prop = new Properties();
         prop.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");
     }
 
-    Session session = Session.getInstance(prop, new Authenticator() {
-        @Override
-        protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication(username, password);
-        }
-    });
+//    Session session = Session.getInstance(prop, new Authenticator() {
+//        @Override
+//        protected PasswordAuthentication getPasswordAuthentication() {
+//            return new PasswordAuthentication(username, password);
+//        }
+//    });
 }
