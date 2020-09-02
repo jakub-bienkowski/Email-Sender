@@ -18,7 +18,8 @@ public class MainServlet extends HttpServlet {
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setCharacterEncoding("UTF-8");
 
         String email = req.getParameter("mailAddress");
@@ -30,12 +31,15 @@ public class MainServlet extends HttpServlet {
         try {
             service.send(email, subject, message);
         } catch (MessagingException e) {
-            e.printStackTrace();
+            STDOUT.error(e.toString());
         }
 
         PrintWriter writer = resp.getWriter();
         writer.println("Your e-mail was sent successfully");
 
     }
+
+
+
 
 }
