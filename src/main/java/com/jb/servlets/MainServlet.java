@@ -1,6 +1,6 @@
 package com.jb.servlets;
 
-import com.jb.MailService.Service;
+import com.jb.mailservice.Service;
 import com.jb.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -24,6 +24,7 @@ public class MainServlet extends HttpServlet {
 
     private static final String TEMPLATE_NAME = "index.ftml";
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
+    private static final String ENCODING = "UTF-8";
 
     @Inject
     TemplateProvider templateProvider;
@@ -31,16 +32,18 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        resp.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding(ENCODING);
+        req.setCharacterEncoding(ENCODING);
 
-        String email = req.getParameter("mailAddress");
-        String subject = req.getParameter("subject");
-        String message = req.getParameter("message");
+        HashMap<String, String> emailData = new HashMap<>();
+        emailData.put("email", req.getParameter("mailAddress"));
+        emailData.put("subject", req.getParameter("subject"));
+        emailData.put("message", req.getParameter("message"));
 
         Service service = new Service();
         service.loadProperties();
         try {
-            service.send(email, subject, message);
+            service.send(emailData);
         } catch (MessagingException e) {
             STDOUT.error(e.toString());
         }
@@ -53,15 +56,16 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        resp.setCharacterEncoding("UTF-8");
-
-        Map<String, Object> map = new HashMap<>();
+        resp.setCharacterEncoding(ENCODING);
+        req.setCharacterEncoding(ENCODING);
 
         Template template = templateProvider.createTemplate(getServletContext(), TEMPLATE_NAME);
+        Map<String, Object> map = new HashMap<>();
         try {
             template.process(map, resp.getWriter());
         } catch (TemplateException e) {
             STDOUT.error("Error while processing template: ", e);
         }
+
         }
     }
