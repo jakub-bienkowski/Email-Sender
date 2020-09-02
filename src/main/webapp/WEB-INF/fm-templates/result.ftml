@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>E-mail service</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+<#if Success??>
+   <div class="d-flex p-2 justify-content-center">
+    <h3>Your e-mail was sent successfully!</h3>
+</div>
+    <#else>
+    <h3>Your e-mail could not be sent!</h3>
+</#if>
+</body>
+</html>

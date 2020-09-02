@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
-import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,12 +28,21 @@ public class MainServlet extends HttpServlet {
     @Inject
     TemplateProvider templateProvider;
 
-    @Override
+
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        Template template = templateProvider.createTemplate(getServletContext(), "result.ftml");
+        Map<String, Object> map = new HashMap<>();
 
         resp.setCharacterEncoding(ENCODING);
         req.setCharacterEncoding(ENCODING);
+        PrintWriter writer = resp.getWriter();
 
+        String a = req.getParameter("mailAddress");
+        String b = req.getParameter("subject");
+        String c = req.getParameter("message");
+
+        writer.println(a + b + c);
         HashMap<String, String> emailData = new HashMap<>();
         emailData.put("email", req.getParameter("mailAddress"));
         emailData.put("subject", req.getParameter("subject"));
@@ -42,18 +50,20 @@ public class MainServlet extends HttpServlet {
 
         Service service = new Service();
         service.loadProperties();
-        try {
-            service.send(emailData);
-        } catch (MessagingException e) {
-            STDOUT.error(e.toString());
+        if (service.send(emailData)){
+            map.put("Success", "Success");
+        } else {
+            map.put("Error", "Error");
         }
 
-        PrintWriter writer = resp.getWriter();
-        writer.println("Your e-mail was sent successfully");
-
+        try {
+            template.process(map, resp.getWriter());
+        } catch (TemplateException e) {
+            STDOUT.error("Error while processing template: ", e);
+        }
     }
 
-    @Override
+
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         resp.setCharacterEncoding(ENCODING);

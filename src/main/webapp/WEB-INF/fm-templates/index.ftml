@@ -13,7 +13,7 @@
 </div>
 <br>
 <div class="d-flex p-2 justify-content-center">
-    <form name="emailForm" method="post" action="mail">
+    <form name="emailForm" method="post" action="/mailService">
         <div class="form-group">
             <label for="mailAddress">E-mail address:</label><br>
             <input type="email" id="mailAddress" placeholder="Enter email" required>
