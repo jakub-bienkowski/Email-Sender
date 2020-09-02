@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class Service {
 
-Properties prop = new Properties();
+    Properties prop = new Properties();
 
     public void loadProperties() {
         prop.put("mail.smtp.auth", "true");
