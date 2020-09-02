@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.jb</groupId>
-  <artifactId>maiService</artifactId>
+  <artifactId>mailService</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>maiService Maven Webapp</name>
+  <name>mailService Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -54,7 +54,7 @@
   </dependencies>
 
   <build>
-    <finalName>maiService</finalName>
+    <finalName>mailService</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
