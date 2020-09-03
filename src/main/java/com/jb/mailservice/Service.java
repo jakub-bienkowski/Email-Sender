@@ -23,6 +23,7 @@ public class Service {
         prop.put("mail.smtp.ssl.trust", "smtp.poczta.onet.pl");
     }
 
+    //e-mail is created only for the project, that given the password is not hidden
     Session session = Session.getInstance(prop, new Authenticator() {
 
         @Override
