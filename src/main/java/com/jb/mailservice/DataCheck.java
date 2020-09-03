@@ -2,7 +2,7 @@ package com.jb.mailservice;
 
 public class DataCheck {
 
-    public static boolean isDataCorrect(String email){
+    public static boolean isEmailCorrect(String email){
 
         if (email == null){
             return false;

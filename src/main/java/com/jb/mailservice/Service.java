@@ -11,8 +11,8 @@ import java.util.Properties;
 public class Service {
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
-    Properties prop = new Properties();
 
+    Properties prop = new Properties();
 
     public void loadProperties() {
         prop.put("mail.smtp.auth", "true");
@@ -33,7 +33,7 @@ public class Service {
 
     public boolean send(Map<String, String> data){
 
-        if (!DataCheck.isDataCorrect(data.get("email"))) {
+        if (!DataCheck.isEmailCorrect(data.get("email"))) {
             return false;
         }
 
