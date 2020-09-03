@@ -45,12 +45,12 @@ public class Service {
             message.setSubject(data.get("subject"));
 
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
-            mimeBodyPart.setContent(data.get("message"), "text/html");
+            mimeBodyPart.setContent(data.get("message"), "text/html; charset=UTF-8");
 
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(mimeBodyPart);
 
-            message.setContent(multipart);
+            message.setContent(multipart, "UTF-8");
             Transport.send(message);
 
             return true;

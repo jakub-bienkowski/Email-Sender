@@ -5,5 +5,14 @@ body {
 input, textarea {
     width: 500px;
 }
+a {
+    color: cornflowerblue;
+}
+a:visited {
+    color: cornflowerblue;
+}
+a:hover {
+    color: cornflowerblue;
+}
 
 

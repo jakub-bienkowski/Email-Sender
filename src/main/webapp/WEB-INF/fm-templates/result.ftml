@@ -8,12 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-<#if Success??>
-   <div class="d-flex p-2 justify-content-center">
-    <h3>Your e-mail was sent successfully!</h3>
-</div>
+<div class="d-flex p-2 justify-content-center">
+    <#if Success??>
+        <h3>Your e-mail was sent successfully!</h3>
     <#else>
-    <h3>Your e-mail could not be sent!</h3>
-</#if>
+        <h3>Your e-mail could not be sent!</h3>
+    </#if>
+</div>
+<div class="d-flex p-2 justify-content-center">
+    <a href="/mailService">Go back to e-mail form</a>
+</div>
 </body>
 </html>
