@@ -10,8 +10,6 @@ import java.util.HashMap;
 
 import static org.mockito.Mockito.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(MockitoExtension.class)
 class ServiceTest {
 
@@ -34,7 +32,8 @@ class ServiceTest {
         map2.put("message", message);
 
         when(service.send(anyMap())).thenReturn(true);
-
         Assertions.assertTrue(service.send(map));
+        Assertions.assertTrue(service.send(map2));
+
     }
 }
